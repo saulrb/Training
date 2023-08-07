@@ -1,0 +1,64 @@
+package com;
+
+import java.lang.reflect.*;
+import java.util.*;
+
+interface TestInterface {
+    int calculate(int a, int b);
+    String calculate(String a, String b);
+    String getValue();
+}
+
+public class MockLibrary implements InvocationHandler {
+
+    List<RegisteredMethods> registeredMethods = new ArrayList<>();
+
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        registeredMethods.forEach( registeredMethods1 -> {
+            if( registeredMethods1.method.equals(method)) {
+                if ( args != null && Arrays.stream(registeredMethods1.args).allMatch(args) ) {
+                    return registeredMethods1.result;
+                }
+            }
+        });
+        return null;
+    }
+
+    public MockLibrary when(String method, Object[] args) {
+        registeredMethods.add(new RegisteredMethods(method,args));
+        return this;
+    }
+
+    public void thenReturn(Object val) {
+        registeredMethods.forEach( registeredMethods1 -> {
+            if (registeredMethods1.result == null){
+                registeredMethods1.result = val;
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        MockLibrary handler = new MockLibrary();
+        TestInterface ref = (TestInterface) Proxy.newProxyInstance(
+                MockLibrary.class.getClassLoader(),
+                new Class[]{TestInterface.class}, handler);
+
+        handler.when("calculate", new Object[] {1, 2}).thenReturn(3);
+        handler.when("calculate", new Object[] {"a", "b"}).thenReturn("ab");
+
+        System.out.println(ref.calculate(1, 2)); // prints 3
+        System.out.println(ref.calculate("a", "b")); // prints "ab"
+    }
+}
+
+class RegisteredMethods {
+    public String method ;
+    public Object[] args;
+    public Object result;
+
+    RegisteredMethods( String method, Object[] args){
+        this.args = args;
+        this.method = method;
+    }
+}
