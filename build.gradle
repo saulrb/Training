@@ -6,8 +6,6 @@ group 'org.example'
 version '1.0-SNAPSHOT'
 
 
-sourceCompatibility = 18
-targetCompatibility = 18
 
 repositories {
     mavenCentral()

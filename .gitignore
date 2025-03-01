@@ -1,0 +1,57 @@
+# Compiled class files
+*.class
+
+# JAR files
+*.jar
+
+# Log files
+*.log
+
+# IDE specific files - IntelliJ IDEA
+.idea/
+*.iml
+
+# IDE specific files - Eclipse
+.settings/
+.project
+bin/
+
+# Build folders
+build/
+out/
+
+# Temporary files
+*~
+\#*
+
+# Java debug files
+*.jdb
+
+##############################
+## Gradle
+##############################
+bin/
+.gradle
+.gradletasknamecache
+gradle-app.setting
+!gradle-wrapper.jar
+
+##############################
+## IntelliJ
+##############################
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
+##############################
+## OS X
+##############################
+.DS_Store
+
+##############################
+## Miscellaneous
+##############################
+*.log
+/build

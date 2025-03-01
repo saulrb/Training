@@ -78,7 +78,6 @@ public class TicTacToe {
         while (winner == null) {
             int numInput;
             try{
-                
                 numInput = in.nextInt();
                 if(!(numInput > 0 && numInput <=9)) {
                     System.out.println(" Invalid input; re-enter slot number:");

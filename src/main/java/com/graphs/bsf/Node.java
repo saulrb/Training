@@ -4,19 +4,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Node {
-    private String nodeName;
-    private List<Node> nextNodes;
+  private String nodeName;
+  private List<Node> nextNodes;
 
-    public Node(String name){
-        nodeName = name;
-        nextNodes = new LinkedList<>();
-    }
+  public Node(String name) {
+    nodeName = name;
+    nextNodes = new LinkedList<>();
+  }
 
-    public String getNodeName() {
-        return nodeName;
-    }
+  public String getNodeName() {
+    return nodeName;
+  }
 
-    public List<Node> getNextNodes() {
-        return nextNodes;
-    }
+  public List<Node> getNextNodes() {
+    return nextNodes;
+  }
 }
