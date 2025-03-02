@@ -1,9 +1,13 @@
 package com.letcode.problems;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LinkedList {
 
     private Node head;
     private Node tail;
+    private int length;
 
     class Node {
         int value;
@@ -18,6 +22,7 @@ public class LinkedList {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
+        length = 1;
     }
 
     public Node getHead() {
@@ -66,6 +71,7 @@ public class LinkedList {
             tail.next = newNode;
             tail = newNode;
         }
+        length++;
     }
 
     public Node findMiddleNode(){
@@ -162,5 +168,42 @@ public class LinkedList {
                 head = highHead;
             }
         }
+    }
+    public void removeDuplicates() {
+        if (head != null && head.next != null) {
+            Set<Integer> values = new HashSet<>();
+            Node trav = head;
+            Node prev = head;
+            System.out.println("Adding " + prev.value);
+            values.add(prev.value);
+            while ( trav.next != null) {
+                trav = trav.next;
+                if (!values.contains(trav.value)) {
+                    System.out.println("Adding " + trav.value);
+                    values.add(trav.value);
+                    prev = prev.next;
+                } else {
+                    System.out.println("Removing " + trav.value);
+                    prev.next = trav.next;
+                    length--;
+                }
+                System.out.println("prev: " + prev.value + " trav: " + trav.value);
+            }
+        }
+    }
+
+    public int binaryToDecimal(){
+        int sum = 0;
+        int pow = length-1;
+        if(head == null){
+            return 0;
+        }
+        Node trav = head;
+        while( trav != null) {
+            sum = (int) (sum + Math.pow(2,pow) * trav.value);
+            pow--;
+            trav = trav.next;
+        }
+        return sum;
     }
 }

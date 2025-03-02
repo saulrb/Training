@@ -53,4 +53,40 @@ class LinkedListTest {
         linkedList.partitionList(5);
         assertEquals(8,linkedList.findKthFromEnd(2).value);
     }
+
+    @Test
+    void removeDuplicates() {
+        linkedList.append(3);
+        linkedList.append(4);
+        linkedList.append(5);
+        linkedList.append(5);
+        linkedList.append(6);
+        linkedList.removeDuplicates();
+        assertEquals(6,linkedList.getTail().value);
+    }
+
+    @Test
+    void removeDuplicatesAll() {
+        linkedList.append(1);
+        linkedList.append(2);
+        linkedList.append(3);
+        linkedList.append(4);
+        linkedList.append(5);
+        linkedList.printList();
+        linkedList.removeDuplicates();
+        assertEquals(5,linkedList.getTail().value);
+        System.out.println("After removing duplicates");
+        linkedList.printList();
+    }
+
+    @Test
+    void testBinaryToDecimal(){
+        linkedList = new LinkedList(1);
+        linkedList.append(0);
+        linkedList.append(1);
+        linkedList.append(0);
+        linkedList.append(1);
+        linkedList.printList();
+        assertEquals(21,linkedList.binaryToDecimal());
+    }
 }
