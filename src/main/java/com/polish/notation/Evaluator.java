@@ -20,20 +20,12 @@ public class Evaluator {
       return Integer.parseInt(elements.pop());
     }
     private int calculate(String operador2, String operador1, String operando){
-        switch (operando) {
-            case "+" : {
-               return Integer.parseInt(operador1) + Integer.parseInt(operador2);
-            }
-            case "-" : {
-                return Integer.parseInt(operador1) - Integer.parseInt(operador2);
-            }
-            case "/" : {
-                return Integer.parseInt(operador1) / Integer.parseInt(operador2);
-            }
-            case "*" : {
-                return Integer.parseInt(operador1) * Integer.parseInt(operador2);
-            }
-        }
-        return 0;
+        return switch (operando) {
+            case "+" -> Integer.parseInt(operador1) + Integer.parseInt(operador2);
+            case "-" -> Integer.parseInt(operador1) - Integer.parseInt(operador2);
+            case "/" -> Integer.parseInt(operador1) / Integer.parseInt(operador2);
+            case "*" -> Integer.parseInt(operador1) * Integer.parseInt(operador2);
+            default -> 0;
+        };
     }
 }
