@@ -91,4 +91,21 @@ class DoubleLinkedListTest {
         assertEquals(5, doubleLinkedList.get(1).value); // Verify the value is inserted
         assertEquals(5, doubleLinkedList.getLength()); // Length should be updated
     }
+
+    @Test
+    void testRemove() {
+        doubleLinkedList.append(2);
+        doubleLinkedList.append(3);
+        doubleLinkedList.append(4);
+        doubleLinkedList.append(5);
+
+        // Remove the node at index 2 (value 3)
+        var removedNode = doubleLinkedList.remove(2);
+        assertNotNull(removedNode);
+        assertEquals(3, removedNode.value); // Verify the removed value
+
+        // Check the list after removal
+        assertNotNull(doubleLinkedList.get(2)); // The node at index 2 should be removed
+        assertEquals(4, doubleLinkedList.getLength()); // Length should be updated
+    }
 }

@@ -181,4 +181,27 @@ public class DoubleLinkedList {
         }
         return false; // Insertion failed
     }
+
+    public Node remove(int index){
+        if (index < 0 || index >= length) {
+            return null; // Invalid index
+        }
+        Node toRemove = get(index);
+        if (toRemove == null) {
+            return null; // Node not found
+        }
+
+        if (toRemove == head) { // Removing the head
+            return removeFirst();
+        } else if (toRemove == tail) { // Removing the tail
+            return removeLast();
+        } else { // Removing a middle node
+            toRemove.prev.next = toRemove.next;
+            toRemove.next.prev = toRemove.prev;
+            toRemove.next = null;
+            toRemove.prev = null;
+            length--;
+            return toRemove;
+        }
+    }
 }
