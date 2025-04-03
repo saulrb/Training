@@ -69,4 +69,26 @@ class DoubleLinkedListTest {
         assertEquals(3, doubleLinkedList.get(3).value);
         assertEquals(4, doubleLinkedList.get(4).value);
     }
+
+    @Test
+    void testSetValue(){
+        doubleLinkedList.append(2);
+        doubleLinkedList.append(3);
+        doubleLinkedList.append(4);
+        doubleLinkedList.set(3, 10); // Set value at index 3 to 10
+        assertNotNull(doubleLinkedList.get(3));
+        assertEquals(10, doubleLinkedList.get(3).value); // Verify the value is updated
+        assertEquals(4, doubleLinkedList.getLength()); // Length should remain unchanged
+    }
+
+    @Test
+    void testInsert(){
+        doubleLinkedList.append(2);
+        doubleLinkedList.append(3);
+        doubleLinkedList.append(4);
+        doubleLinkedList.insert(1, 5); // Insert value 5 at index 1
+        assertNotNull(doubleLinkedList.get(1));
+        assertEquals(5, doubleLinkedList.get(1).value); // Verify the value is inserted
+        assertEquals(5, doubleLinkedList.getLength()); // Length should be updated
+    }
 }

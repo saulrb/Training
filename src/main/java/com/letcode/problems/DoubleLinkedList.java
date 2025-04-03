@@ -143,4 +143,42 @@ public class DoubleLinkedList {
         return temp;
     }
 
+    public boolean set(int index,int value){
+        Node nottoSet = get(index);
+        if (nottoSet != null) {
+            nottoSet.value = value;
+            return true;
+        }
+        return false; // Return false if the index is invalid or node not found
+    }
+
+    public boolean insert(int index, int value){
+        if (index < 0 || index > length) {
+            return false; // Invalid index
+        }
+        Node newNode = new Node(value);
+        if (index == 0) { // Insert at the head
+            prepend(value);
+            return true;
+        } else if (index == length) { // Insert at the tail
+            append(value);
+            return true;
+        } else {
+            Node current = get(index);
+            if (current != null) {
+                newNode.prev = current.prev;
+                newNode.next = current;
+                if (current.prev != null) {
+                    current.prev.next = newNode;
+                }
+                current.prev = newNode;
+                if (current == head) {
+                    head = newNode; // Update head if inserting at the start
+                }
+                length++;
+                return true;
+            }
+        }
+        return false; // Insertion failed
+    }
 }
