@@ -204,4 +204,35 @@ public class DoubleLinkedList {
             return toRemove;
         }
     }
+
+    public void swapFirstLast() {
+        if (length > 1) {
+            int tempTailValue = tail.value;
+            tail.value = head.value;
+            head.value = tempTailValue;
+        }
+    }
+
+    public void reverse() {
+        if (length > 1) {
+            Node tmp1 = new Node(tail.value);
+            tmp1.prev = tail.next;
+            tmp1.next = tail.prev;
+            head = tmp1;
+            System.out.println(">>>"+head.value);
+            Node tempT = head.next;
+            while(tempT != null){
+                System.out.println(">>>"+tempT.value);
+                Node tmp = new Node(0);
+                tmp.prev = tempT.next;
+                tmp.next = tempT.prev;
+                tempT.prev = tmp.prev;
+                tempT.next = tmp.next;
+                if( tempT.next == null){
+                    tail = tempT;
+                }
+                tempT = tempT.next;
+            }
+        }
+    }
 }

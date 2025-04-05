@@ -108,4 +108,26 @@ class DoubleLinkedListTest {
         assertNotNull(doubleLinkedList.get(2)); // The node at index 2 should be removed
         assertEquals(4, doubleLinkedList.getLength()); // Length should be updated
     }
+    @Test
+    void testReverse() {
+        doubleLinkedList.append(2);
+        doubleLinkedList.append(3);
+        doubleLinkedList.append(4);
+        doubleLinkedList.append(5);
+
+        // Reverse the list
+        doubleLinkedList.reverse();
+
+        doubleLinkedList.printList();
+        // Check the head and tail values after reversal
+        assertEquals(5, doubleLinkedList.getHead().value); // Head should be 5
+        assertEquals(1, doubleLinkedList.getTail().value); // Tail should be 1
+
+        // Check the order of elements in the list
+        assertEquals(5, doubleLinkedList.get(0).value);
+        assertEquals(4, doubleLinkedList.get(1).value);
+        assertEquals(3, doubleLinkedList.get(2).value);
+        assertEquals(2, doubleLinkedList.get(3).value);
+        assertEquals(5, doubleLinkedList.getLength()); // Length should remain unchanged
+    }
 }
