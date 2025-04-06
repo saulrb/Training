@@ -11,7 +11,7 @@ class StackTest {
 
     @BeforeEach
     void setUp() {
-        stack = new Stack(4);
+        stack = new Stack();
     }
 
     @Test
@@ -33,6 +33,13 @@ class StackTest {
     void testPush(){
         stack.push(2);
         stack.printStack();
-        assertEquals(2, stack.height);
+        assertEquals(1, stack.height);
+    }
+    @Test
+    void testPop(){
+        stack.push(2);
+        stack.pop();
+        stack.printStack();
+        assertEquals(0, stack.height);
     }
 }

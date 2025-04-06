@@ -14,6 +14,11 @@ public class Stack {
         }
     }
 
+    public Stack() {
+        this.top = null;
+        this.height = 0;
+    }
+
     public Stack(int value) {
         this.top = new Node(value);
         this.height = 1;
@@ -48,6 +53,18 @@ public class Stack {
             top = newNode;
         }
         height++;
+    }
+
+    public Node pop(){
+        if(top == null) {
+            System.out.println("Stack is empty");
+            return null;
+        } else {
+            Node out = top;
+            top = top.next;
+            height--;
+            return out;
+        }
     }
 
 }
