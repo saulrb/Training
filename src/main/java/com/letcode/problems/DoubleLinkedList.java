@@ -235,4 +235,56 @@ public class DoubleLinkedList {
             }
         }
     }
+
+    public boolean isPalindrome(){
+        if(length == 0){
+            return true;
+        }
+        Node left = head;
+        Node right = tail;
+        while(left != null && right != null && left != right && left.prev != right){
+            if(left.value != right.value){
+                return false;
+            }
+            left = left.next;
+            right = right.prev;
+        }
+        return true;
+    }
+
+    public void swapPairs() {
+        if (length > 1) {
+            Node temp1 = head;
+            Node temp2 = head.next;
+            while (temp1.next != null) {
+                // Swap values of current and next nodes
+                Node tmp = new Node(temp1.value);
+                tmp.prev = temp1.prev;
+                tmp.next = temp1.next;
+                temp1.next = temp2.next;
+                temp1.prev = temp2;
+                if(temp2.next != null){
+                    temp2.next.prev = temp1;
+                }
+                temp2.next = temp1;
+                temp2.prev = tmp.prev;
+                if(temp2.prev != null){
+                    temp2.prev.next = temp2;
+                }
+                if (temp1.next != null) {
+                    temp1.next.prev = temp1;
+                }
+                if (head.prev != null) {
+                    head = temp2;
+                }
+                if(temp1.next != null){
+                    temp1 = temp1.next;
+                }
+                if(temp1.next != null){
+                    temp2 = temp1.next;
+                }
+            }
+            tail = temp1;
+        }
+    }
 }

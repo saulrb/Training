@@ -130,4 +130,46 @@ class DoubleLinkedListTest {
         assertEquals(2, doubleLinkedList.get(3).value);
         assertEquals(5, doubleLinkedList.getLength()); // Length should remain unchanged
     }
+    @Test
+    void testIsPalindrome() {
+        doubleLinkedList.append(2);
+        doubleLinkedList.append(3);
+        doubleLinkedList.append(2);
+        doubleLinkedList.append(1);
+
+        // Check if the list is a palindrome
+        assertTrue(doubleLinkedList.isPalindrome());
+
+        // Modify the list to make it not a palindrome
+        doubleLinkedList.append(4);
+        assertFalse(doubleLinkedList.isPalindrome());
+    }
+
+    @Test
+    void testSwapPairs1Pair() {
+        doubleLinkedList.append(2);
+
+        // Swap pairs in the list
+        doubleLinkedList.swapPairs();
+        doubleLinkedList.printList();
+        // Check the order of elements after swapping
+        assertEquals(2, doubleLinkedList.get(0).value);
+        assertEquals(1, doubleLinkedList.get(1).value);
+    }
+
+    @Test
+    void testSwapPairs() {
+        doubleLinkedList.append(2);
+        doubleLinkedList.append(3);
+        doubleLinkedList.append(4);
+
+        // Swap pairs in the list
+        doubleLinkedList.swapPairs();
+        doubleLinkedList.printList();
+        // Check the order of elements after swapping
+        assertEquals(2, doubleLinkedList.get(0).value);
+        assertEquals(1, doubleLinkedList.get(1).value);
+        assertEquals(4, doubleLinkedList.get(2).value);
+        assertEquals(3, doubleLinkedList.get(3).value);
+    }
 }
