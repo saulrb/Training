@@ -28,6 +28,7 @@ class SumOfTowTest {
     void highestSum() {
         target = 16;
         int[] solution = SumOfTow.highestSum(input);
+        System.out.println("solution = " + Arrays.toString(solution));
         Assertions.assertEquals(target,input.get(solution[0]).intValue() + input.get(solution[1]).intValue());
 
     }
