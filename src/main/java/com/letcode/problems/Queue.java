@@ -50,10 +50,13 @@ public class Queue {
             return null;
         }
         Node temp = first;
-        if (first == last) {
+        if(length == 1){
             last = null;
+            first = null;
+        } else {
+            first = first.next;
+            temp.next = null;
         }
-        first = first.next;
         length--;
         return temp;
     }
